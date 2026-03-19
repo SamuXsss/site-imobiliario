@@ -7,7 +7,7 @@ const mensagem = document.getElementById("loginMensagem")
 const submitAuth = document.getElementById("submitAuth")
 const tabEntrar = document.getElementById("tabEntrar")
 const tabCadastrar = document.getElementById("tabCadastrar")
-const API_BASE_URL = localStorage.getItem("authApiUrl") || "http://localhost:3001"
+const API_BASE_URL = "https://site-imobiliario.onrender.com"
 
 let modoAtual = "entrar"
 
