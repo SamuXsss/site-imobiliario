@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel | Mota Imóveis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-panel">
+<main class="panel-shell">
+  <section class="panel-card auth-card-wide">
+    <span class="section-kicker">Minha conta</span>
+    <h1>Área conectada</h1>
+    <p id="painelBoasVindas">Você está autenticado e pode continuar sua navegação com segurança.</p>
+
+    <div class="panel-info-grid">
+      <div class="panel-info-item">
+        <strong>Status</strong>
+        <span>Conectado</span>
+      </div>
+      <div class="panel-info-item">
+        <strong>Conta</strong>
+        <span id="painelEmail">-</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="index.html" class="ghost-button panel-link">Voltar ao site</a>
+      <button class="botao" type="button" onclick="logout()">Sair</button>
+    </div>
+  </section>
+</main>
+
+<script src="painel.js"></script>
+</body>
+</html>

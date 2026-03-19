@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mota Imóveis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-home">
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-block">
+      <span class="brand-kicker">Mota Imóveis</span>
+      <h1>Descubra imóveis com atendimento direto, apresentação profissional e busca simples.</h1>
+    </div>
+
+    <div class="hero-panel">
+      <div class="search-shell">
+        <label class="search-label" for="busca">Buscar imóveis</label>
+        <input id="busca" placeholder="Procure por nome do imóvel">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-shell home-layout">
+  <aside class="sidebar">
+    <section class="sidebar-card">
+      <div class="sidebar-head">
+        <span class="section-kicker">Escolher filtros</span>
+        <h2>Refine sua busca</h2>
+      </div>
+
+      <div class="filter-stack">
+        <div class="field-stack">
+          <label for="filtroQuartos">Quantidade de quartos</label>
+          <select id="filtroQuartos">
+            <option value="">Qualquer quantidade</option>
+            <option value="2">Até 2 quartos</option>
+            <option value="3">Até 3 quartos</option>
+            <option value="4">Até 4 quartos</option>
+          </select>
+        </div>
+
+        <div class="field-stack">
+          <label for="filtroPreco">Faixa de preço</label>
+          <select id="filtroPreco">
+            <option value="">Todos os valores</option>
+            <option value="300000">Até R$ 300 mil</option>
+            <option value="500000">Até R$ 500 mil</option>
+            <option value="800000">Até R$ 800 mil</option>
+            <option value="1200000">Até R$ 1,2 milhão</option>
+          </select>
+        </div>
+
+        <button class="ghost-button" type="button" onclick="limparFiltros()">Limpar filtros</button>
+      </div>
+    </section>
+
+    <section class="sidebar-card">
+      <div class="sidebar-head">
+        <span class="section-kicker">Favoritos</span>
+        <h2>Seus imóveis salvos</h2>
+      </div>
+      <div id="favoritosLista" class="favorites-list">
+        <p class="empty-state">Você ainda não salvou imóveis.</p>
+      </div>
+    </section>
+
+    <section class="sidebar-card sidebar-contact">
+      <div class="sidebar-head">
+        <span class="section-kicker">Atendimento</span>
+        <h2>Fale diretamente com o corretor</h2>
+      </div>
+      <p>Tire dúvidas, peça opções parecidas e agende uma visita com atendimento rápido.</p>
+      <a href="https://wa.me/5511952531263" class="botao botao-full">Abrir WhatsApp</a>
+    </section>
+
+    <section class="sidebar-card sidebar-access">
+      <div class="sidebar-head">
+        <span class="section-kicker">Conta</span>
+        <h2>Entrar / Minha conta</h2>
+      </div>
+      <p id="authStatus">Entre ou saia da sua conta quando precisar.</p>
+      <div id="authActions" class="auth-actions"></div>
+    </section>
+  </aside>
+
+  <div class="home-content">
+    <section class="launch-section">
+      <div class="launch-intro">
+        <h2><strong>Lançamentos</strong></h2>
+      </div>
+
+      <div id="launchCarousel" class="launch-carousel">
+        <div class="launch-empty">
+          <h3>Nenhum lançamento configurado ainda</h3>
+          <p>Adicione na API um imóvel com categoria, tipo, status ou lançamento marcado como "lancamento" ou "na planta".</p>
+        </div>
+      </div>
+
+      <div id="launchDots" class="launch-dots"></div>
+    </section>
+
+    <section class="listing-section">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Seleção em destaque</span>
+          <h2>Imóveis disponíveis</h2>
+        </div>
+        <p>Explore as opções com visualização rápida e navegue para os detalhes quando quiser.</p>
+      </div>
+
+      <div id="lista-imoveis" class="grid"></div>
+    </section>
+
+    <section class="sobre professional-footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="section-kicker">Mota Imóveis</span>
+          <h2>Consultoria imobiliária com atendimento próximo e apresentação profissional.</h2>
+          <p>Mais clareza na busca, apoio na decisão e contato rápido para transformar interesse em visita.</p>
+        </div>
+
+        <div class="footer-columns">
+          <div class="footer-column">
+            <img src="foto.jpg" alt="José Silva Campelo Mota" class="footer-photo">
+          </div>
+
+          <div class="footer-column">
+            <h3>Atendimento</h3>
+            <p>José Silva Campelo Mota</p>
+            <p>(11) 95253-1263</p>
+            <p>mota.apto@gmail.com</p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contato rápido</h3>
+            <a href="https://wa.me/5511952531263" class="botao">Falar no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="pdfModal" class="pdf-modal" aria-hidden="true">
+  <div class="pdf-backdrop" onclick="fecharPdfModal()"></div>
+  <div class="pdf-dialog" role="dialog" aria-modal="true" aria-labelledby="pdfModalTitle">
+    <div class="pdf-header">
+      <div>
+        <span class="section-kicker">Apresentação completa</span>
+        <h2 id="pdfModalTitle">Material do lançamento</h2>
+      </div>
+      <div class="pdf-actions">
+        <a href="hipica.pdf" target="_blank" rel="noopener noreferrer" class="ghost-button pdf-link">Abrir em nova aba</a>
+        <button type="button" class="pdf-close" onclick="fecharPdfModal()" aria-label="Fechar PDF">&times;</button>
+      </div>
+    </div>
+    <div class="pdf-frame-shell">
+      <iframe src="hipica.pdf" class="pdf-frame" title="PDF do lançamento"></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="videoModal" class="video-modal" aria-hidden="true">
+  <div class="video-backdrop" onclick="fecharVideoModal()"></div>
+  <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+    <div class="video-header">
+      <h2 id="videoModalTitle">Vídeo do lançamento</h2>
+      <button type="button" class="video-close" onclick="fecharVideoModal()" aria-label="Fechar vídeo">&times;</button>
+    </div>
+    <video id="videoModalPlayer" class="video-player" controls autoplay muted playsinline>
+      <source src="video-home.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<a href="https://wa.me/5511952531263" class="whatsapp" aria-label="Falar no WhatsApp">W</a>
+
+<script src="script.js"></script>
+</body>
+</html>

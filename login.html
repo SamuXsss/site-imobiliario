@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acesso | Mota Imóveis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-auth">
+<main class="auth-shell">
+  <section class="auth-card auth-card-wide">
+    <span class="section-kicker">Área do cliente</span>
+    <h1>Entre ou crie sua conta</h1>
+    <p>Cadastre-se para salvar seus dados de acesso e entrar no site quando quiser.</p>
+
+    <div class="auth-tabs" role="tablist" aria-label="Opções de acesso">
+      <button id="tabEntrar" class="auth-tab ativa" type="button" onclick="alternarModo('entrar')">Entrar</button>
+      <button id="tabCadastrar" class="auth-tab" type="button" onclick="alternarModo('cadastrar')">Cadastrar</button>
+    </div>
+
+    <form id="loginForm" class="form-stack" novalidate>
+      <div id="campoNome" class="field-stack hidden-field">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" placeholder="Seu nome completo" autocomplete="name">
+      </div>
+
+      <div class="field-stack">
+        <label for="usuario">E-mail</label>
+        <input id="usuario" type="email" placeholder="seuemail@exemplo.com" autocomplete="username">
+      </div>
+
+      <div class="field-stack">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password">
+      </div>
+
+      <p id="loginMensagem" class="form-feedback" aria-live="polite"></p>
+
+      <button id="submitAuth" class="botao botao-full" type="submit">Entrar</button>
+    </form>
+  </section>
+</main>
+
+<script src="login.js"></script>
+</body>
+</html>

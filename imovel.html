@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do imóvel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-detail">
+<main class="detail-shell">
+  <section class="detail-hero">
+    <div class="detail-copy">
+      <span class="section-kicker">Detalhes do imóvel</span>
+      <h1 id="titulo"></h1>
+      <p id="descricao" class="detail-description"></p>
+      <div class="detail-actions">
+        <h2 id="preco" class="detail-price"></h2>
+        <a id="whatsappBtn" class="botao">Falar no WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="detail-media">
+      <div class="viewer-frame">
+        <div class="viewer-topbar">
+          <span id="viewerCounter" class="viewer-counter">1 / 1</span>
+          <button class="viewer-expand" type="button" onclick="abrirTelaCheia()">Ver em tela cheia</button>
+        </div>
+        <button class="viewer-nav viewer-prev" type="button" onclick="moverFoto(-1)" aria-label="Foto anterior">&#8249;</button>
+        <img id="fotoPrincipal" alt="Foto principal do imóvel" onclick="abrirTelaCheia()">
+        <button class="viewer-nav viewer-next" type="button" onclick="moverFoto(1)" aria-label="Próxima foto">&#8250;</button>
+      </div>
+      <div id="miniaturas" class="miniaturas"></div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="section-head">
+      <div>
+        <span class="section-kicker">Região</span>
+        <h2>Localização</h2>
+      </div>
+    </div>
+    <iframe id="mapa" width="100%" height="420" loading="lazy"></iframe>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox" onclick="fecharTelaCheia(event)">
+  <div id="lightboxCounter" class="lightbox-counter">1 / 1</div>
+  <button class="lightbox-close" type="button" onclick="fecharTelaCheia()" aria-label="Fechar visualização">&times;</button>
+  <button class="lightbox-nav lightbox-prev" type="button" onclick="moverFoto(-1, true)" aria-label="Foto anterior">&#8249;</button>
+  <img id="lightboxImagem" class="lightbox-image" alt="Foto ampliada do imóvel">
+  <button class="lightbox-nav lightbox-next" type="button" onclick="moverFoto(1, true)" aria-label="Próxima foto">&#8250;</button>
+</div>
+
+<script src="imovel.js"></script>
+</body>
+</html>
