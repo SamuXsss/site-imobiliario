@@ -122,14 +122,14 @@ function atualizarAcesso() {
   if (token) {
     authStatus.innerText = nome ? `${nome}, sua conta está conectada no momento.` : "Sua conta está conectada no momento."
     authActions.innerHTML = `
-      <a href="painel.html" class="botao botao-full">Ir para minha conta</a>
+      <a href="painel.html" class="botao header-account-button">Ir para minha conta</a>
       <button type="button" class="ghost-button" onclick="logoutHome()">Logout</button>
     `
     return
   }
 
   authStatus.innerText = "Entre ou crie sua conta para continuar."
-  authActions.innerHTML = `<a href="login.html" class="botao botao-full">Entrar ou cadastrar</a>`
+  authActions.innerHTML = `<a href="login.html" class="botao header-account-button">Entrar ou cadastrar</a>`
 }
 
 async function sincronizarSessao() {
