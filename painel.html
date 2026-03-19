@@ -13,6 +13,11 @@
     <h1>Área conectada</h1>
     <p id="painelBoasVindas">Você está autenticado e pode continuar sua navegação com segurança.</p>
 
+    <div class="account-badge">
+      <span class="account-badge-dot"></span>
+      <strong>Conta conectada</strong>
+    </div>
+
     <div class="panel-info-grid">
       <div class="panel-info-item">
         <strong>Status</strong>
@@ -22,12 +27,33 @@
         <strong>Conta</strong>
         <span id="painelEmail">-</span>
       </div>
+      <div class="panel-info-item">
+        <strong>Ambiente</strong>
+        <span>Cliente autenticado</span>
+      </div>
     </div>
 
     <div class="hero-actions">
       <a href="index.html" class="ghost-button panel-link">Voltar ao site</a>
       <button class="botao" type="button" onclick="logout()">Sair</button>
     </div>
+
+    <section class="account-favorites">
+      <div class="section-head account-favorites-head">
+        <div>
+          <span class="section-kicker">Favoritos</span>
+          <h2>Imóveis salvos</h2>
+        </div>
+        <p>Veja aqui os imóveis que você marcou como favoritos durante a navegação.</p>
+      </div>
+
+      <div id="painelFavoritosLista" class="favorites-grid">
+        <div class="empty-results">
+          <h3>Carregando seus favoritos</h3>
+          <p>Estamos reunindo os imóveis que você salvou.</p>
+        </div>
+      </div>
+    </section>
   </section>
 </main>
 

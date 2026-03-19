@@ -3,10 +3,15 @@ const campoNomeWrap = document.getElementById("campoNome")
 const campoNome = document.getElementById("nome")
 const campoUsuario = document.getElementById("usuario")
 const campoSenha = document.getElementById("senha")
+const campoConfirmarSenhaWrap = document.getElementById("campoConfirmarSenha")
+const campoConfirmarSenha = document.getElementById("confirmarSenha")
 const mensagem = document.getElementById("loginMensagem")
 const submitAuth = document.getElementById("submitAuth")
 const tabEntrar = document.getElementById("tabEntrar")
 const tabCadastrar = document.getElementById("tabCadastrar")
+const forgotPasswordBtn = document.getElementById("forgotPasswordBtn")
+const forgotPasswordBox = document.getElementById("forgotPasswordBox")
+const mostrarSenha = document.getElementById("mostrarSenha")
 const API_BASE_URL = "https://site-imobiliario.onrender.com"
 
 let modoAtual = "entrar"
@@ -22,12 +27,16 @@ function alternarModo(modo) {
   const cadastroAtivo = modo === "cadastrar"
 
   campoNomeWrap.classList.toggle("hidden-field", !cadastroAtivo)
+  campoConfirmarSenhaWrap.classList.toggle("hidden-field", !cadastroAtivo)
   tabEntrar.classList.toggle("ativa", !cadastroAtivo)
   tabCadastrar.classList.toggle("ativa", cadastroAtivo)
   submitAuth.innerText = cadastroAtivo ? "Criar conta" : "Entrar"
+  forgotPasswordBtn.classList.toggle("hidden-field", cadastroAtivo)
+  forgotPasswordBox.classList.add("hidden-field")
   mensagem.innerText = ""
   mensagem.classList.remove("erro", "sucesso")
   campoNome.required = cadastroAtivo
+  campoConfirmarSenha.required = cadastroAtivo
 }
 
 function handleAuth(event) {
@@ -45,9 +54,15 @@ async function cadastrar() {
   const nome = campoNome.value.trim()
   const email = campoUsuario.value.trim().toLowerCase()
   const senha = campoSenha.value.trim()
+  const confirmarSenha = campoConfirmarSenha.value.trim()
 
-  if (!nome || !email || !senha) {
-    mostrarMensagem("Preencha nome, e-mail e senha para criar sua conta.", true)
+  if (!nome || !email || !senha || !confirmarSenha) {
+    mostrarMensagem("Preencha nome, e-mail, senha e confirmação para criar sua conta.", true)
+    return
+  }
+
+  if (senha !== confirmarSenha) {
+    mostrarMensagem("A confirmação de senha precisa ser igual à senha informada.", true)
     return
   }
 
@@ -67,6 +82,7 @@ async function cadastrar() {
     mostrarMensagem("Conta criada com sucesso. Faça seu login.", false)
     alternarModo("entrar")
     campoSenha.value = ""
+    campoConfirmarSenha.value = ""
   } catch {
     mostrarMensagem("A API de autenticação não está disponível no momento.", true)
   }
@@ -111,4 +127,14 @@ function mostrarMensagem(texto, erro) {
   mensagem.innerText = texto
   mensagem.classList.toggle("erro", erro)
   mensagem.classList.toggle("sucesso", !erro)
+}
+
+function alternarVisibilidadeSenha() {
+  const tipo = mostrarSenha.checked ? "text" : "password"
+  campoSenha.type = tipo
+  campoConfirmarSenha.type = tipo
+}
+
+function abrirRecuperacaoSenha() {
+  forgotPasswordBox.classList.toggle("hidden-field")
 }

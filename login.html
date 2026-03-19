@@ -13,6 +13,17 @@
     <h1>Entre ou crie sua conta</h1>
     <p>Cadastre-se para salvar seus dados de acesso e entrar no site quando quiser.</p>
 
+    <div class="auth-trust">
+      <div class="auth-trust-item">
+        <strong>Acesso seguro</strong>
+        <span>Use sua conta para continuar de forma mais prática.</span>
+      </div>
+      <div class="auth-trust-item">
+        <strong>Experiência contínua</strong>
+        <span>Seus dados de sessão ficam organizados em um único acesso.</span>
+      </div>
+    </div>
+
     <div class="auth-tabs" role="tablist" aria-label="Opções de acesso">
       <button id="tabEntrar" class="auth-tab ativa" type="button" onclick="alternarModo('entrar')">Entrar</button>
       <button id="tabCadastrar" class="auth-tab" type="button" onclick="alternarModo('cadastrar')">Cadastrar</button>
@@ -34,10 +45,32 @@
         <input id="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password">
       </div>
 
+      <div id="campoConfirmarSenha" class="field-stack hidden-field">
+        <label for="confirmarSenha">Confirmar senha</label>
+        <input id="confirmarSenha" type="password" placeholder="Repita sua senha" autocomplete="new-password">
+      </div>
+
+      <div class="auth-inline-row">
+        <label class="auth-check">
+          <input id="mostrarSenha" type="checkbox" onchange="alternarVisibilidadeSenha()">
+          <span>Mostrar senha</span>
+        </label>
+        <button id="forgotPasswordBtn" class="auth-link-button" type="button" onclick="abrirRecuperacaoSenha()">Esqueci minha senha</button>
+      </div>
+
       <p id="loginMensagem" class="form-feedback" aria-live="polite"></p>
 
       <button id="submitAuth" class="botao botao-full" type="submit">Entrar</button>
     </form>
+
+    <div id="forgotPasswordBox" class="forgot-box hidden-field">
+      <strong>Recuperar acesso</strong>
+      <p>Para redefinir sua senha, fale com a equipe da Mota Imóveis e informe o e-mail cadastrado.</p>
+      <div class="auth-help-actions">
+        <a href="mailto:mota.apto@gmail.com?subject=Recuperação%20de%20senha%20-%20Mota%20Imóveis" class="ghost-button auth-help-link">Enviar e-mail</a>
+        <a href="https://wa.me/5511952531263?text=Olá,%20preciso%20recuperar%20o%20acesso%20da%20minha%20conta." class="ghost-button auth-help-link">Falar no WhatsApp</a>
+      </div>
+    </div>
   </section>
 </main>
 

@@ -91,6 +91,11 @@ function obterFavoritos() {
 
 function renderFavoritos() {
   const container = document.getElementById("favoritosLista")
+
+  if (!container) {
+    return
+  }
+
   const favoritos = obterFavoritos()
   const salvos = dados.filter(imovel => favoritos.includes(String(imovel.id)))
 
@@ -125,6 +130,35 @@ function atualizarAcesso() {
 
   authStatus.innerText = "Entre ou crie sua conta para continuar."
   authActions.innerHTML = `<a href="login.html" class="botao botao-full">Entrar ou cadastrar</a>`
+}
+
+async function sincronizarSessao() {
+  const token = localStorage.getItem("authToken")
+
+  if (!token) {
+    atualizarAcesso()
+    return
+  }
+
+  try {
+    const resposta = await fetch("https://site-imobiliario.onrender.com/api/session", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+
+    if (!resposta.ok) {
+      logoutHome()
+      return
+    }
+
+    const dados = await resposta.json()
+    localStorage.setItem("usuarioNome", dados.usuario.nome)
+    localStorage.setItem("usuarioEmail", dados.usuario.email)
+    atualizarAcesso()
+  } catch {
+    atualizarAcesso()
+  }
 }
 
 function logoutHome() {
@@ -429,3 +463,4 @@ function fecharVideoModal() {
 document.getElementById("busca").addEventListener("input", aplicarFiltros)
 document.getElementById("filtroQuartos").addEventListener("change", aplicarFiltros)
 document.getElementById("filtroPreco").addEventListener("change", aplicarFiltros)
+sincronizarSessao()
